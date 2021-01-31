@@ -38,7 +38,14 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rubocop', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'bootstrap', '~> 4.5'
+gem 'jquery-rails'
+gem 'devise'
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"

@@ -5,11 +5,53 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
   </head>
 
   <body>
+    <% if flash[:notice] %>
+      <div class="alert alert-info">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="alert alert-danger">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+
+  <header>
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
+    <%= link_to root_path, class: "my-0 mr-md-auto title" do %>
+      <h1 style="font-family: cursive;">BOOK-APP</h1>
+    <% end %>
+    <% if user_signed_in? %>
+      <%= link_to users_path, class: "btn btn-dark mr-3" do %>
+        <i class="fas fa-book-reader mr-1"></i>ユーザー一覧
+      <% end %>
+      <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-dark mr-3" do %>
+        <i class="fas fa-sign-out-alt mr-1"></i>ログアウト
+      <% end %>
+    <% else %>
+      <%= link_to users_path, class: "btn btn-dark mr-3" do %>
+        <i class="fas fa-book-reader mr-1"></i>ユーザー一覧
+      <% end %>
+      <%= link_to new_user_session_path, class: "btn btn-dark mr-3" do %>
+        <i class="fas fa-sign-in-alt mr-1"></i>ログイン
+      <% end %>
+      <%= link_to new_user_registration_path, class: "btn btn-dark mr-3" do %>
+        <i class="fas fa-user-plus mr-1"></i>新規登録
+      <% end %>
+    <% end %>
+  </div>
+  </header> 
+
     <%= yield %>
   </body>
 </html>

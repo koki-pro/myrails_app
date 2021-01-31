@@ -1,0 +1,62 @@
+<nav class="navbar navbar-light navbar-dark bg-primary">
+  <a class="navbar-brand"  href="#">ユーザー新規登録</a>
+</nav>
+
+
+<div class="container mt-5 p-lg-5 bg-light">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), method: :post, html: {class: "needs-validation"}) do |f| %>
+  
+  <%= render 'devise/shared/error_messages', model: f.object %>
+
+  <div class="container">
+    <div class="form-group row">
+      <div class="col-md-8">
+        <label for="Name">お名前</label><br />
+        <%= f.text_field :username, class: "form-control" ,id:"name", placeholder:"例) 山田太郎" %>
+      </div>
+    </div>
+  </div>    
+
+  <div class="container">
+    <div class="form-group row">
+      <div class="col-md-8">
+        <%= f.label :Eメール %><br />
+        <%= f.email_field :email, class: "form-control", id: "email", placeholder: "example@gmail.com" %>
+      </div>
+    </div>
+  </div>  
+
+  <div class="container">
+    <div class="form-group row">
+      <div class="col-md-8">
+        <%= f.label :パスワード %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> 文字以上)</em>
+        <% end %><br />
+        <%= f.password_field :password, class: "form-control", id: "password", placeholder: "パスワード", autocomplete: "new-password" %>
+      </div>
+    </div>
+  </div> 
+
+  <div class="container">
+    <div class="form-group row">
+      <div class="col-md-8">
+        <%= f.label :パスワード確認 %><br />
+        <%= f.password_field :password_confirmation, class: "form-control", id: "password", placeholder: "パスワード", autocomplete: "new-password" %>
+      </div>
+    </div>
+  </div>  
+
+  <div class="container mt-5">
+    <div class="col-md-4 align-self-center">
+      <%= f.submit "新規登録", class: "btn btn-success btn-block" %>
+    </div>
+  </div>  
+
+  <div class="container mt-5">
+    <div class="col-md-4 align-self-center">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>  
+  <% end %>
+</div>
