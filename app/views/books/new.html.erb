@@ -1,2 +1,43 @@
-<h1>Books#new</h1>
-<p>Find me in app/views/books/new.html.erb</p>
+<nav class="navbar navbar-light navbar-dark bg-success">
+  <a class="navbar-brand"  href="#">BOOK 投稿</a>
+</nav>
+
+<div class="container mt-5 p-lg-5 bg-light">
+<%= form_for @book do |f| %>
+
+  <div class="container">
+    <div class="form-group row">
+      <div class="col-md-8">
+        <label for="Name">タイトル</label><br />
+        <%= f.text_field :title, class: "form-control"%>
+      </div>
+    </div>
+  </div>  
+
+  <div class="container">
+    <div class="form-group row">
+      <div class="col-md-8">
+        <label for="Name">内容</label><br />
+        <%= f.text_area :body, class: "form-control"%>
+      </div>
+    </div>
+  </div>  
+
+  <div class="container">
+    <div class="form-group row">
+      <div class="col-md-8">
+        <label for="Name">画像</label><br />
+        <%= f.attachment_field :image, class: "form-control"%>
+      </div>
+    </div>
+  </div>  
+    
+  
+  <div class="container mt-5">
+    <div class="col-md-4 align-self-center">
+      <%= f.submit "投稿", class: "btn btn-success btn-block" %>
+    </div>
+  </div>  
+
+<% end %>
+</div>
