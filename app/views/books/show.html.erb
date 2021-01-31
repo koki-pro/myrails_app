@@ -1,2 +1,17 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<nav class="navbar navbar-light navbar-dark bg-success">
+  <a class="navbar-brand"  href="#">BOOK 詳細画面</a>
+</nav>
+
+<div class="book-content">
+  <div class="book-image">
+    <%= attachment_image_tag @book, :image, fallback: "no-image.png" %>
+  </div>
+
+  <div class="book-main">
+  <h1>〜タイトル〜</h1>
+    <h2><%= @book.title %></h2>
+  
+  <h1>〜内容〜</h1>
+    <td><%= simple_format @book.body %></td>
+  </div>
+</div>
