@@ -1,2 +1,15 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<nav class="navbar navbar-light navbar-dark bg-success">
+  <a class="navbar-brand"  href="#">ユーザー詳細画面</a>
+</nav>
+
+<div class="card mx-auto mt-4" style="width: 40rem;">
+  <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", class: "card-img", width: "100%", height: "400" %>
+  <div class="card-body">
+    <h3 class="card-title"><%= @user.username %></h3>
+    <p class="card-text"><%= @user.profile %></p>
+    <% if @user.id == current_user.id %>
+      <h4 class="card-title"><%= @user.email %></h4>
+       <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary" %>
+    <% end %>  
+  </div>
+</div>

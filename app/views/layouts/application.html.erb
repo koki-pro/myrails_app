@@ -28,14 +28,20 @@
 
   <header>
   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
-    <%= link_to root_path, class: "my-0 mr-md-auto title navbar-brand" do %>
+    <%= link_to root_path, class: "my-0 mr-md-auto title" do %>
       <h1 style="font-family: cursive;">BOOK-APP</h1>
     <% end %>
     <% if user_signed_in? %>
+      <%= link_to users_path, class: "btn btn-dark mr-3" do %>
+        <i class="fas fa-book-reader mr-1"></i>ユーザー一覧
+      <% end %>
       <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-dark mr-3" do %>
         <i class="fas fa-sign-out-alt mr-1"></i>ログアウト
       <% end %>
     <% else %>
+      <%= link_to users_path, class: "btn btn-dark mr-3" do %>
+        <i class="fas fa-book-reader mr-1"></i>ユーザー一覧
+      <% end %>
       <%= link_to new_user_session_path, class: "btn btn-dark mr-3" do %>
         <i class="fas fa-sign-in-alt mr-1"></i>ログイン
       <% end %>
@@ -45,7 +51,6 @@
     <% end %>
   </div>
   </header> 
-
 
     <%= yield %>
   </body>
