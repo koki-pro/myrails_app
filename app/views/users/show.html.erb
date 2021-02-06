@@ -2,14 +2,30 @@
   <a class="navbar-brand"  href="#">ユーザー詳細画面</a>
 </nav>
 
-<div class="card mx-auto mt-4" style="width: 40rem;">
-  <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", class: "card-img", width: "100%", height: "400" %>
-  <div class="card-body">
-    <h3 class="card-title"><%= @user.username %></h3>
-    <p class="card-text"><%= @user.profile %></p>
-    <% if @user.id == current_user.id %>
-      <h4 class="card-title"><%= @user.email %></h4>
-       <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary" %>
+<div class="profile-wrap">
+  <div class="row">
+    <div class="col-md-4 text-center">
+    <%= link_to edit_user_path(@user) do %>
+      <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", class: "round-img" %>
     <% end %>  
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <h1><%= @user.username %></h1>
+      </div>
+      <div class="row">
+        <p><%= simple_format @user.profile %></p>
+      </div>
+      <% if @user.id == current_user.id  %>
+        <div class="row">
+          <div class="col-md-4">
+          <p class="useremail"><%= @user.email %></p>
+          </div>
+          <div class="col-md-8">
+          <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary edit-profile-btn" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
